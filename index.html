@@ -37,7 +37,7 @@
 
         <!-- example of a present time block -->
         <div id="hour-10" class="row time-block present">
-            <div class="col-md-1 hour">
+            <div id="currentHour" class="col-md-1 hour">
                 10AM
             </div>
             <textarea class="col-md-10 description">
@@ -105,14 +105,22 @@
         </div>
 
         <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-        <script src="./script.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="./script.js"></script>
 
         <script>
-            var m = moment();
-            // console.log(m.format("dddd, MMMM do YYYY"));
-            var currentDay = document.getElementById("currentDay")
-            currentDay.append(m.format("dddd, MMMM do YYYY"));
+            // var m = moment();
+            // // console.log(m.format("dddd, MMMM do YYYY "));
+            // var currentDay = document.getElementById("currentDay")
+            // currentDay.append(m.format("dddd, MMMM do YYYY"));
+
+            // var m1 = moment() +
+            //     console.log(m.diff(m))
+
+
+            // .isSame https://www.youtube.com/watch?v=fPSX6fLHxDc
+
+            // .
         </script>
 
 
