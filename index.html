@@ -104,12 +104,18 @@
             <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="./script.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
-        <!-- link your javascript files here. (Must be after jquery is linked!
-      You should be able to explain why that is to be "employer ready".) -->
-        <script src="./script.js"></script>
+        <script>
+            var m = moment();
+            // console.log(m.format("dddd, MMMM do YYYY"));
+            var currentDay = document.getElementById("currentDay")
+            currentDay.append(m.format("dddd, MMMM do YYYY"));
+        </script>
+
+
 
 </body>
 
