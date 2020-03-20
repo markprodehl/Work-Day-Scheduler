@@ -25,7 +25,7 @@ $('.saveBtn').on('click', function(event) {
     console.log(descriptionText)
 
     var timeBlockEl = $(this).parent(".time-block").attr("id")
-        // console.log(timeBlockEl)
+
     event.preventDefault();
     //store that data by settin it to local storage
     localStorage.setItem(timeBlockEl, JSON.stringify(descriptionText));
