@@ -1,3 +1,11 @@
+.past {
+    background-color: blue;
+}
+
+.future {
+    background-color: greenyellow;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
