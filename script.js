@@ -7,60 +7,68 @@ var hoursData = {
     '14': '',
     '15': '',
     '16': '',
-    '17': '',
-    '18': '',
-    '19': '',
-    '20': ''
+    '17': ''
 };
 
 var m = moment();
-// console.log(m.format("dddd, MMMM do YYYY "));
 //let currentDay be the current date on the screen
 var currentDay = document.getElementById("currentDay")
-currentDay.append(m.format("dddd, MMMM do YYYY"));
-
+currentDay.append(m.format("dddd, MMMM Do YYYY"));
 // let currentHour be the hour of the current time of day
 var currentHour = moment()
 currentHour = parseInt(moment().format("H"));
-// console.log(currentHour)
 
-// check localStorage for hours data
+//create user object from submission
+$('.saveBtn').on('click', function(event) {
+    //prevent defaults
+    var descriptionText = $(this).siblings(".description").val();
+    console.log(descriptionText)
 
+    var timeBlockEl = $(this).parent(".time-block").attr("id")
+        // console.log(timeBlockEl)
+    event.preventDefault();
+    //store that data by settin it to local storage
+    localStorage.setItem(timeBlockEl, JSON.stringify(descriptionText));
+});
 
-// update hoursData if localStorage for hours data isn't empty
-// how to determine if time is future/present/past
-// let currentHour be the hour of the current time of day
+var timeBlocks = $(".time-block")
 
+timeBlocks.each(function(index, element) {
+
+    console.log(element.id)
+
+    if (localStorage.getItem(element.id)) {
+        var descriptionText = localStorage.getItem(element.id)
+            // update dom with the returned data
+            // $(element.id)
+        $(element).children("textarea").val(JSON.parse(descriptionText))
+    } else {
+        // do nothing
+    }
+})
 
 // get reference to all the hours
 var timeBlockElements = $(".time-block")
-    // console.log(timeBlockElements)
-    // for each hour
+
+// for each hour
 timeBlockElements.each(function() {
-    // get the hour of the block
-    // console.log(this);
+    // get the hour of the block   
     var timeBlockHour = parseInt(this.id.split("-")[1]);
-    // console.log(this)
     // get description from hoursData
     var description = hoursData[timeBlockHour.toString()];
     // display the description
-    // console.log(description)
-    $(this)
-        .find("textarea")
-        .val(description);
-    console.log(timeBlockHour, currentHour);
+
 
     if (timeBlockHour < currentHour) {
         $(this).addClass("past")
-        console.log(this)
+            // console.log(this)
     } else if (timeBlockHour === currentHour) {
         //   give present class to the hour
         $(this).addClass("present")
-    } else {
-        //   give future class to the hour
-        $(this).addclass("future")
+    } else if (timeBlockHour > currentHour) {
+        //   give future class to the hour *****CANNOT GET THE COLOR TO CHANGE
+        $(this).addClass("future")
     }
 
-});
 
-//make styles for past, present and future see css
+});
